@@ -1,6 +1,6 @@
 site_name: Askog96´s Blog
 site_url: https://askog96.github.io/askog96.github.io/
-repo_url: https://github.com/askog96/askog96.github.io
+#repo_url: https://github.com/askog96/askog96.github.io
 nav:
   - Home: 'index.md'
 markdown_extensions:
