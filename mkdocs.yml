@@ -4,7 +4,7 @@ repo_url: https://github.com/askog96/askog96.github.io
 nav:
   - Home: 'index.md'
   - OpenShift and Kubernetes:
-      - Manage users with htpasswd: 'OpenShift and Kubernetes/htpasswd.md'
+      - Manage users with htpasswd: 'openshift/htpasswd.md'
   - Network:
       - subjet3: ''
   - Vmware:

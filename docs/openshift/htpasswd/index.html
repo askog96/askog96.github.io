@@ -8,21 +8,21 @@
       
       
       
-        <link rel="canonical" href="https://askog96.github.io/askog96.github.io/">
+        <link rel="canonical" href="https://askog96.github.io/askog96.github.io/openshift/htpasswd/">
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.2.11">
     
     
       
-        <title>Askog96´s Blog</title>
+        <title>Manage users with htpasswd - Askog96´s Blog</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.8c5ef100.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8c5ef100.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.9647289d.min.css">
         
       
     
@@ -37,9 +37,9 @@
       
     
     
-      <link rel="stylesheet" href="css/extra.css">
+      <link rel="stylesheet" href="../../css/extra.css">
     
-    <script>__md_scope=new URL(".",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#welcome-to-mkdocs" class="md-skip">
+        <a href="#create-and-configure-new-users-using-htpassd" class="md-skip">
           Skip to content
         </a>
       
@@ -81,7 +81,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Askog96´s Blog" class="md-header__button md-logo" aria-label="Askog96´s Blog" data-md-component="logo">
+    <a href="../.." title="Askog96´s Blog" class="md-header__button md-logo" aria-label="Askog96´s Blog" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              Manage users with htpasswd
             
           </span>
         </div>
@@ -194,12 +194,10 @@
         
   
   
-    
-  
 
 
   <li class="md-tabs__item">
-    <a href="." class="md-tabs__link md-tabs__link--active">
+    <a href="../.." class="md-tabs__link">
       Home
     </a>
   </li>
@@ -208,13 +206,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="openshift/htpasswd/" class="md-tabs__link">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
         OpenShift and Kubernetes
       </a>
     </li>
@@ -230,7 +230,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         Network
       </a>
     </li>
@@ -246,7 +246,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         Vmware
       </a>
     </li>
@@ -274,7 +274,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Askog96´s Blog" class="md-nav__button md-logo" aria-label="Askog96´s Blog" data-md-component="logo">
+    <a href="../.." title="Askog96´s Blog" class="md-nav__button md-logo" aria-label="Askog96´s Blog" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -303,126 +303,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Home
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         Home
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#home-page" class="md-nav__link">
-    Home Page
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#commands" class="md-nav__link">
-    Commands
-  </a>
-  
-    <nav class="md-nav" aria-label="Commands">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#highlighted-posts" class="md-nav__link">
-    Highlighted Posts
-  </a>
-  
-    <nav class="md-nav" aria-label="Highlighted Posts">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#linux-overview" class="md-nav__link">
-    Linux Overview
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#project-layout" class="md-nav__link">
-    Project layout
-  </a>
-  
-    <nav class="md-nav" aria-label="Project layout">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#linux-how-to" class="md-nav__link">
-    Linux How To
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#all-posts" class="md-nav__link">
-    All Posts
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -433,12 +318,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       
       
@@ -459,11 +346,66 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="openshift/htpasswd/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Manage users with htpasswd
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Manage users with htpasswd
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#create-new-secret-used-by-oauth" class="md-nav__link">
+    Create new secret used by OAuth
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rollout-deployment-to-apply-configuration" class="md-nav__link">
+    Rollout deployment to apply configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-cluster-admin-to-user" class="md-nav__link">
+    Add cluster-admin to user
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -509,7 +451,7 @@
   
   
     <li class="md-nav__item">
-      <a href="." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         subjet3
       </a>
     </li>
@@ -557,7 +499,7 @@
   
   
     <li class="md-nav__item">
-      <a href="." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         subject4
       </a>
     </li>
@@ -598,83 +540,23 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#home-page" class="md-nav__link">
-    Home Page
+  <a href="#create-new-secret-used-by-oauth" class="md-nav__link">
+    Create new secret used by OAuth
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#commands" class="md-nav__link">
-    Commands
+  <a href="#rollout-deployment-to-apply-configuration" class="md-nav__link">
+    Rollout deployment to apply configuration
   </a>
-  
-    <nav class="md-nav" aria-label="Commands">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#highlighted-posts" class="md-nav__link">
-    Highlighted Posts
-  </a>
-  
-    <nav class="md-nav" aria-label="Highlighted Posts">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#linux-overview" class="md-nav__link">
-    Linux Overview
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#project-layout" class="md-nav__link">
-    Project layout
+  <a href="#add-cluster-admin-to-user" class="md-nav__link">
+    Add cluster-admin to user
   </a>
-  
-    <nav class="md-nav" aria-label="Project layout">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#linux-how-to" class="md-nav__link">
-    Linux How To
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#all-posts" class="md-nav__link">
-    All Posts
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -690,39 +572,71 @@
             <article class="md-content__inner md-typeset">
               
                 
-  <a href="https://github.com/askog96/askog96.github.io/edit/main/src/index.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/askog96/askog96.github.io/edit/main/src/openshift/htpasswd.md" title="Edit this page" class="md-content__button md-icon">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
 
-<h1 id="welcome-to-mkdocs">Welcome to MkDocs</h1>
-<p>For full documentation visit <a href="https://www.mkdocs.org">mkdocs.org</a>.</p>
-<h2 id="home-page">Home Page</h2>
-<h2 id="commands">Commands</h2>
-<h3 id="highlighted-posts">Highlighted Posts</h3>
-<ul>
-<li><code>mkdocs new [dir-name]</code> - Create a new project.</li>
-<li><code>mkdocs serve</code> - Start the live-reloading docs server.</li>
-<li><code>mkdocs build</code> - Build the documentation site.</li>
-<li><code>mkdocs -h</code> - Print help message and exit.</li>
-</ul>
-<h4 id="_1"><img alt="Linux Overview" src="path/to/your/image.jpg" /></h4>
-<h4 id="linux-overview"><a href="Linux/linux.md">Linux Overview</a></h4>
-<p><em>A comprehensive overview of the Linux operating system, covering history, distributions, and key features.</em></p>
-<h2 id="project-layout">Project layout</h2>
-<h4 id="_2"><img alt="Linux How To" src="path/to/another/image.jpg" /></h4>
-<h4 id="linux-how-to"><a href="Linux/How To/linux.md">Linux How To</a></h4>
-<p><em>Step-by-step guides on various tasks and setups within the Linux environment.</em></p>
-<h3 id="all-posts">All Posts</h3>
-<ul>
-<li><a href="Linux/linux.md">Linux Overview</a></li>
-<li><a href="Linux/How To/linux.md">Linux How To</a>
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.</li>
-</ul>
+<h1 id="create-and-configure-new-users-using-htpassd">Create and Configure new users using htpassd</h1>
+<p>Create a new user new_admin with the password redhat in the existing file ~/auth-providers/htpasswd:</p>
+<div class="copy-to-clipboard">
+  <pre>
+  <code>htpasswd -c -B -b ~/auth-providers/htpasswd new_admin redhat</code>
+  </pre>
+</div>
+<p>-c: Create a new file. If the file already exists, it will be overwritten.
+-B: Use bcrypt encryption for the password, which is more secure.
+-b: Use the password from the command line rather than prompting for it.
+~/auth-providers/htpasswd: The path to the file where the user credentials will be stored.
+new_admin: The username of the new user.
+redhat: The password for the new user.</p>
+<div class="caution">
+  <code>&#9888; Caution: Running this command with the `-c` option will overwrite the existing htpasswd file. Make sure you do not lose existing user data.</code>
+</div>
+<h2 id="create-new-secret-used-by-oauth">Create new secret used by OAuth</h2>
+<div class="copy-to-clipboard">
+  <pre>
+  <code>oc create secret generic localusers --from-file htpasswd=~/auth-providers/htpasswd -n openshift-config</code>
+  </pre>
+</div>
+<h2 id="rollout-deployment-to-apply-configuration">Rollout deployment to apply configuration</h2>
+<div class="copy-to-clipboard">
+  <pre>
+  <code>oc rollout restart deployment/oauth-openshift -n openshift-authentication</code>
+  </pre>
+</div>
+<h2 id="add-cluster-admin-to-user">Add cluster-admin to user</h2>
+<div class="copy-to-clipboard">
+  <pre>
+  <code>oc adm policy add-cluster-role-to-user cluster-admin new_admin</code>
+  </pre>
+</div>
+<h1 id="add-a-user-to-existing-oauth-config">Add a user to existing OAuth config</h1>
+<h2 id="extract-the-file-data-from-secret">Extract the file data from secret</h2>
+<div class="copy-to-clipboard">
+  <pre>
+  <code>oc extract secret/localusers -n openshift-config --to ~/auth-providers/ --confirm</code>
+  </pre>
+</div>
+<h2 id="add-new-user-to-htpasswd-called-manager-with-password-redhat">Add new user to htpasswd called manager with password redhat</h2>
+<div class="copy-to-clipboard">
+  <pre>
+  <code>htpasswd -b ~/auth-providers/htpasswd manager redhat</code>
+  </pre>
+</div>
+<h2 id="update-secret-used-by-oauth">Update secret used by OAuth</h2>
+<div class="copy-to-clipboard">
+  <pre>
+  <code>oc set data secret/localusers --from-file htpasswd=~/auth-providers/htpasswd -n openshift-config</code>
+  </pre>
+</div>
+<h2 id="rollout-deployment-to-apply-configuration_1">Rollout deployment to apply configuration</h2>
+<div class="copy-to-clipboard">
+  <pre>
+  <code>oc rollout restart deployment/oauth-openshift -n openshift-authentication</code>
+  </pre>
+</div>
 
               
             </article>
@@ -740,21 +654,21 @@
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-      
         
-        <a href="openshift/htpasswd/" class="md-footer__link md-footer__link--next" aria-label="Next: Manage users with htpasswd" rel="next">
+        <a href="../.." class="md-footer__link md-footer__link--prev" aria-label="Previous: Home" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
-                Next
+                Previous
               </span>
-              Manage users with htpasswd
+              Home
             </div>
           </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
         </a>
+      
       
     </nav>
   
@@ -778,10 +692,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.expand", "navigation.tabs", "navigation.top", "content.code.copy"], "search": "assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "navigation.tabs", "navigation.top", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.748e2769.min.js"></script>
+      <script src="../../assets/javascripts/bundle.748e2769.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       
