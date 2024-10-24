@@ -5,7 +5,7 @@ nav:
   - Home: 'index.md'
   - OpenShift and Kubernetes:
       - Manage users with htpasswd: 'openshift/htpasswd.md'
-      - Running squidproxy as a container on OpenShift 4: 'openshift/squidproxy.md'
+      - Running squidproxy as a container on OpenShift 4: 'openshift/squid.md'
       - Single node OpenShift running on OpenShift Virtualization: 'openshift/virtsno.md'
   - Network:
       - subjet3: ''
