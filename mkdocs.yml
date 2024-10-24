@@ -3,17 +3,6 @@ site_url: https://askog96.github.io/askog96.github.io/
 repo_url: https://github.com/askog96/askog96.github.io
 nav:
   - Home: 'index.md'
-  - Linux:
-      - Linux: 'Linux/linux.md'
-      - How to: 'Linux/How-to/linux.md'
-  - OpenShift and Kubernetes:
-      - Manage users with htpasswd: 'OpenShift and Kubernetes/htpasswd.md'
-      - Running squidproxy as a container on OpenShift 4: 'OpenShift and Kubernetes/squidproxy.md'
-      - Single node OpenShift running on OpenShift Virtualization: 'OpenShift and Kubernetes/virtsno.md'
-  - Network:
-      - subjet3: ''
-  - Vmware:
-      - subject4: ''
 markdown_extensions:
   - toc:
     permalink: "#"
@@ -21,7 +10,6 @@ theme:
   name: material
   features:
     - navigation.expand
-    - navigation.tabs
     - navigation.top
     - content.code.copy
   palette:
@@ -37,8 +25,6 @@ theme:
       toggle:
         icon: material/brightness-3
         name: Switch to light mode
-extra_css:
-  - css/extra.css
 extra_javascript: 
   - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 markdown_extensions:
