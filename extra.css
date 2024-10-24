@@ -1,0 +1,44 @@
+.caution {
+    border: 1px solid #f0ad4e;
+    background-color: #fcf8e3;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .caution strong {
+    color: #8a6d3b;
+    margin-right: 10px;
+  }
+  
+  .caution::before {
+    content: "\26A0"; /* Unicode for warning sign */
+    font-size: 24px;
+    color: #f0ad4e;
+    margin-right: 10px;
+  }
+  
+  .copy-to-clipboard {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    margin: 10px 0;
+  }
+  
+  .copy-to-clipboard::after {
+    content: "Copy";
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #007bff;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+  }
+  
+  .copy-to-clipboard:hover::after {
+    background: #0056b3;
+  }
