@@ -3,6 +3,12 @@ site_url: https://askog96.github.io/askog96.github.io/
 repo_url: https://github.com/askog96/askog96.github.io
 nav:
   - Home: 'index.md'
+  - OpenShift and Kubernetes:
+      - Manage users with htpasswd: 'OpenShift and Kubernetes/htpasswd.md'
+  - Network:
+      - subjet3: ''
+  - Vmware:
+      - subject4: ''
 markdown_extensions:
   - toc:
     permalink: "#"
@@ -10,6 +16,7 @@ theme:
   name: material
   features:
     - navigation.expand
+    - navigation.tabs
     - navigation.top
     - content.code.copy
   palette:
@@ -25,6 +32,8 @@ theme:
       toggle:
         icon: material/brightness-3
         name: Switch to light mode
+extra_css:
+  - css/extra.css
 extra_javascript: 
   - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 markdown_extensions:
@@ -38,4 +47,3 @@ markdown_extensions:
 docs_dir: src
 edit_uri: edit/main/src/
 site_dir: docs
-
