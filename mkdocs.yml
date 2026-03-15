@@ -9,7 +9,6 @@ nav:
   - Networking: networking.md
   - Virtualization: virtualization.md
   - Notes: notes.md
-  - Contact: contact.md
 markdown_extensions:
   - toc:
       permalink: "#"
