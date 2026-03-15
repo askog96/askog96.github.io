@@ -1,19 +1,26 @@
-site_name: Askog96´s Blog
-site_url: https://askog96.github.io/askog96.github.io/
+site_name: Alexander Skog
+site_url: https://askog96.github.io/
 repo_url: https://github.com/askog96/askog96.github.io
 nav:
-  - Home: 'index.md'
-  - OpenShift and Kubernetes:
-      - Manage users with htpasswd: 'openshift/htpasswd.md'
-      - Running squidproxy as a container on OpenShift 4: 'openshift/squid.md'
-      - Single node OpenShift running on OpenShift Virtualization: 'openshift/virtsno.md'
-  - Network:
-      - subjet3: ''
-  - Vmware:
-      - subject4: ''
+  - Home: index.md
+  - About: about.md
+  - Topics:
+      - OpenShift and Kubernetes:
+          - Manage users with htpasswd: openshift/htpasswd.md
+          - Running Squid as a container on OpenShift 4: openshift/squid.md
+          - Single-node OpenShift on OpenShift Virtualization: openshift/virtsno.md
+  - Writing Ideas: ideas.md
+  - Contact: contact.md
 markdown_extensions:
   - toc:
-    permalink: "#"
+      permalink: "#"
+  - mdx_math
+  - admonition
+  - sane_lists
+  - pymdownx.highlight:
+      auto_title: false
+  - pymdownx.superfences
+  - pymdownx.keys
 theme:
   name: material
   features:
@@ -36,16 +43,8 @@ theme:
         name: Switch to light mode
 extra_css:
   - css/extra.css
-extra_javascript: 
+extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML
-markdown_extensions:
-  - mdx_math
-  - admonition
-  - sane_lists
-  - pymdownx.highlight:
-      auto_title: false
-  - pymdownx.superfences
-  - pymdownx.keys
 docs_dir: src
 edit_uri: edit/main/src/
 site_dir: docs

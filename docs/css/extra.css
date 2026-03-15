@@ -1,0 +1,12 @@
+.md-typeset h1 {
+  margin-bottom: 0.4rem;
+}
+
+.md-typeset h2 {
+  margin-top: 2rem;
+}
+
+.md-typeset ul li,
+.md-typeset ol li {
+  margin-bottom: 0.3rem;
+}

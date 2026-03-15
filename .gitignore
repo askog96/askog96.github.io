@@ -1,0 +1,39 @@
+.venv/
+__pycache__/
+.DS_Store
+
+# Local notes
+README.md
+
+# Environment and secrets
+.env
+.env.*
+*.env
+*.local
+*.secret
+*.secrets
+*.token
+*.tokens
+*.pem
+*.key
+*.crt
+*.csr
+*.p12
+*.pfx
+*.kubeconfig
+id_rsa
+id_rsa.pub
+known_hosts
+
+# Python caches and tooling
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Editor and OS files
+.idea/
+.vscode/
+*.swp
+*.swo
