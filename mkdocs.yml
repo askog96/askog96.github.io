@@ -3,13 +3,12 @@ site_url: https://askog96.github.io/
 repo_url: https://github.com/askog96/askog96.github.io
 nav:
   - Home: index.md
-  - About: about.md
-  - Topics:
-      - OpenShift and Kubernetes:
-          - Manage users with htpasswd: openshift/htpasswd.md
-          - Running Squid as a container on OpenShift 4: openshift/squid.md
-          - Single-node OpenShift on OpenShift Virtualization: openshift/virtsno.md
-  - Writing Ideas: ideas.md
+  - OpenShift and Kubernetes:
+      - Overview: openshift/index.md
+      - Manage users with htpasswd: openshift/htpasswd.md
+  - Networking: networking.md
+  - Virtualization: virtualization.md
+  - Notes: notes.md
   - Contact: contact.md
 markdown_extensions:
   - toc:

@@ -8,31 +8,31 @@
       
       
       
-        <link rel="canonical" href="https://askog96.github.io/openshift/htpasswd/">
+        <link rel="canonical" href="https://askog96.github.io/networking/">
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="../openshift/htpasswd/">
       
       
-        <link rel="next" href="../../networking/">
+        <link rel="next" href="../virtualization/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
     
     
       
-        <title>Manage users with htpasswd - Alexander Skog</title>
+        <title>Networking - Alexander Skog</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -51,9 +51,9 @@
       
     
     
-      <link rel="stylesheet" href="../../css/extra.css">
+      <link rel="stylesheet" href="../css/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#manage-users-with-htpasswd-in-openshift" class="md-skip">
+        <a href="#networking" class="md-skip">
           Skip to content
         </a>
       
@@ -92,7 +92,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Alexander Skog" class="md-header__button md-logo" aria-label="Alexander Skog" data-md-component="logo">
+    <a href=".." title="Alexander Skog" class="md-header__button md-logo" aria-label="Alexander Skog" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Manage users with htpasswd
+              Networking
             
           </span>
         </div>
@@ -223,7 +223,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href=".." class="md-tabs__link">
         
   
   
@@ -240,13 +240,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../openshift/" class="md-tabs__link">
           
   
   
@@ -262,9 +260,11 @@
   
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href="../../networking/" class="md-tabs__link">
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
         
   
   
@@ -283,7 +283,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../virtualization/" class="md-tabs__link">
+      <a href="../virtualization/" class="md-tabs__link">
         
   
   
@@ -302,7 +302,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../notes/" class="md-tabs__link">
+      <a href="../notes/" class="md-tabs__link">
         
   
   
@@ -321,7 +321,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../contact/" class="md-tabs__link">
+      <a href="../contact/" class="md-tabs__link">
         
   
   
@@ -356,7 +356,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Alexander Skog" class="md-nav__button md-logo" aria-label="Alexander Skog" data-md-component="logo">
+    <a href=".." title="Alexander Skog" class="md-nav__button md-logo" aria-label="Alexander Skog" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -386,7 +386,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   
@@ -410,29 +410,26 @@
       
   
   
-    
   
   
-  
     
     
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   
@@ -450,7 +447,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -468,7 +465,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../openshift/" class="md-nav__link">
         
   
   
@@ -493,37 +490,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Manage users with htpasswd
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../openshift/htpasswd/" class="md-nav__link">
         
   
   
@@ -539,81 +509,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#create-a-new-htpasswd-file" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Create a new htpasswd file
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-the-secret-used-by-oauth" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Create the secret used by OAuth
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#restart-oauth" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Restart OAuth
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#give-the-user-cluster-admin" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Give the user cluster-admin
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#add-a-user-to-an-existing-htpasswd-setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Add a user to an existing htpasswd setup
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -630,10 +525,19 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../networking/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -649,6 +553,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -660,7 +565,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../virtualization/" class="md-nav__link">
+      <a href="../virtualization/" class="md-nav__link">
         
   
   
@@ -687,7 +592,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../notes/" class="md-nav__link">
+      <a href="../notes/" class="md-nav__link">
         
   
   
@@ -714,7 +619,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../contact/" class="md-nav__link">
+      <a href="../contact/" class="md-nav__link">
         
   
   
@@ -754,69 +659,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#create-a-new-htpasswd-file" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Create a new htpasswd file
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-the-secret-used-by-oauth" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Create the secret used by OAuth
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#restart-oauth" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Restart OAuth
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#give-the-user-cluster-admin" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Give the user cluster-admin
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#add-a-user-to-an-existing-htpasswd-setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Add a user to an existing htpasswd setup
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -835,35 +677,14 @@
   
 
 
-<h1 id="manage-users-with-htpasswd-in-openshift">Manage users with htpasswd in OpenShift<a class="headerlink" href="#manage-users-with-htpasswd-in-openshift" title="Permanent link">#</a></h1>
-<p>These are the commands I use when I need to manage local users with <code>htpasswd</code> in OpenShift.</p>
-<h2 id="create-a-new-htpasswd-file">Create a new htpasswd file<a class="headerlink" href="#create-a-new-htpasswd-file" title="Permanent link">#</a></h2>
-<p>This creates a new file and adds a user called <code>new_admin</code>:</p>
-<div class="highlight"><pre><span></span><code>htpasswd<span class="w"> </span>-c<span class="w"> </span>-B<span class="w"> </span>-b<span class="w"> </span>~/auth-providers/htpasswd<span class="w"> </span>new_admin<span class="w"> </span>redhat
-</code></pre></div>
-<p>The important part here is <code>-c</code>, since that creates a new file. If the file already exists, it will be overwritten.</p>
-<h2 id="create-the-secret-used-by-oauth">Create the secret used by OAuth<a class="headerlink" href="#create-the-secret-used-by-oauth" title="Permanent link">#</a></h2>
-<div class="highlight"><pre><span></span><code>oc<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>localusers<span class="w"> </span>--from-file<span class="w"> </span><span class="nv">htpasswd</span><span class="o">=</span>~/auth-providers/htpasswd<span class="w"> </span>-n<span class="w"> </span>openshift-config
-</code></pre></div>
-<h2 id="restart-oauth">Restart OAuth<a class="headerlink" href="#restart-oauth" title="Permanent link">#</a></h2>
-<div class="highlight"><pre><span></span><code>oc<span class="w"> </span>rollout<span class="w"> </span>restart<span class="w"> </span>deployment/oauth-openshift<span class="w"> </span>-n<span class="w"> </span>openshift-authentication
-</code></pre></div>
-<h2 id="give-the-user-cluster-admin">Give the user cluster-admin<a class="headerlink" href="#give-the-user-cluster-admin" title="Permanent link">#</a></h2>
-<div class="highlight"><pre><span></span><code>oc<span class="w"> </span>adm<span class="w"> </span>policy<span class="w"> </span>add-cluster-role-to-user<span class="w"> </span>cluster-admin<span class="w"> </span>new_admin
-</code></pre></div>
-<h2 id="add-a-user-to-an-existing-htpasswd-setup">Add a user to an existing htpasswd setup<a class="headerlink" href="#add-a-user-to-an-existing-htpasswd-setup" title="Permanent link">#</a></h2>
-<p>If the secret already exists, extract the current file first:</p>
-<div class="highlight"><pre><span></span><code>oc<span class="w"> </span>extract<span class="w"> </span>secret/localusers<span class="w"> </span>-n<span class="w"> </span>openshift-config<span class="w"> </span>--to<span class="w"> </span>~/auth-providers/<span class="w"> </span>--confirm
-</code></pre></div>
-<p>Then add another user:</p>
-<div class="highlight"><pre><span></span><code>htpasswd<span class="w"> </span>-b<span class="w"> </span>~/auth-providers/htpasswd<span class="w"> </span>manager<span class="w"> </span>redhat
-</code></pre></div>
-<p>Update the secret:</p>
-<div class="highlight"><pre><span></span><code>oc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>data<span class="w"> </span>secret/localusers<span class="w"> </span>--from-file<span class="w"> </span><span class="nv">htpasswd</span><span class="o">=</span>~/auth-providers/htpasswd<span class="w"> </span>-n<span class="w"> </span>openshift-config
-</code></pre></div>
-<p>And restart OAuth again:</p>
-<div class="highlight"><pre><span></span><code>oc<span class="w"> </span>rollout<span class="w"> </span>restart<span class="w"> </span>deployment/oauth-openshift<span class="w"> </span>-n<span class="w"> </span>openshift-authentication
-</code></pre></div>
+<h1 id="networking">Networking<a class="headerlink" href="#networking" title="Permanent link">#</a></h1>
+<p>No posts here yet.</p>
+<p>Things I want to write about:</p>
+<ul>
+<li>DNS for lab environments</li>
+<li>Ingress and proxy setup</li>
+<li>Load balancer notes</li>
+</ul>
 
 
 
@@ -919,10 +740,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.expand", "navigation.tabs", "navigation.top", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.expand", "navigation.tabs", "navigation.top", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       
