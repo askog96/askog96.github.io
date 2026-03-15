@@ -1,14 +1,7 @@
 # Contact
 
-The easiest way to turn this into a real personal site is to make it easy to reach you.
+For now, GitHub is the best place to find what I'm working on:
 
-## Add here
+- [github.com/askog96](https://github.com/askog96)
 
-- GitHub: `https://github.com/askog96`
-- LinkedIn: your profile link
-- Email: a public contact address if you want one
-- Resume or CV: optional downloadable link
-
-## Tip
-
-If you do not want to publish your email directly, link to GitHub and LinkedIn and keep this page simple.
+I may add more here later, but I want to keep this page minimal for now.

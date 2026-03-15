@@ -1,29 +1,15 @@
 # About
 
-I'm Alexander, and this site is where I collect practical notes from working with platform technologies.
+I'm Alexander, and I work mostly with infrastructure and platform-related topics.
 
-My strongest topics right now are:
+This site is where I collect notes that I want to keep around, especially when I've spent time figuring something out and know I'll need it again later.
+
+The topics I come back to most are:
 
 - OpenShift
 - Kubernetes
 - Virtualization
-- Infrastructure troubleshooting
-- Networking in lab and platform environments
+- Networking
+- Troubleshooting and lab work
 
-## What I want this site to be
-
-Not just a generic blog, but a useful reference for real platform work:
-
-- concise enough to scan quickly
-- detailed enough to repeat the steps later
-- honest about what worked, what failed, and what I would change next time
-
-## Suggested additions
-
-This page will become much stronger if you add:
-
-- a short professional bio
-- your current role or focus area
-- a link to your GitHub profile
-- a link to LinkedIn or another contact method
-- a short note about your lab environment or interests
+I’m not trying to make this into a polished content site. It’s mostly a personal knowledge base with write-ups that are a bit cleaner than raw notes.
