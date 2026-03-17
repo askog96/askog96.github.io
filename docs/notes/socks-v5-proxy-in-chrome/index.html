@@ -8,31 +8,29 @@
       
       
       
-        <link rel="canonical" href="https://askog96.github.io/networking/">
+        <link rel="canonical" href="https://askog96.github.io/notes/socks-v5-proxy-in-chrome/">
       
       
-        <link rel="prev" href="../openshift/htpasswd/">
+        <link rel="prev" href="../">
       
-      
-        <link rel="next" href="../virtualization/">
       
       
         
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
     
     
       
-        <title>Networking - Alexander Skog</title>
+        <title>Chrome with SOCKS v5 proxy - Alexander Skog</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -51,9 +49,9 @@
       
     
     
-      <link rel="stylesheet" href="../css/extra.css">
+      <link rel="stylesheet" href="../../css/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -78,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#networking" class="md-skip">
+        <a href="#chrome-with-socks-v5-proxy" class="md-skip">
           Skip to content
         </a>
       
@@ -92,7 +90,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Alexander Skog" class="md-header__button md-logo" aria-label="Alexander Skog" data-md-component="logo">
+    <a href="../.." title="Alexander Skog" class="md-header__button md-logo" aria-label="Alexander Skog" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -112,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Networking
+              Chrome with SOCKS v5 proxy
             
           </span>
         </div>
@@ -223,7 +221,7 @@
   
   
     <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
   
@@ -244,7 +242,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../openshift/" class="md-tabs__link">
+        <a href="../../openshift/" class="md-tabs__link">
           
   
   
@@ -260,11 +258,9 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../../networking/" class="md-tabs__link">
         
   
   
@@ -283,7 +279,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../virtualization/" class="md-tabs__link">
+      <a href="../../virtualization/" class="md-tabs__link">
         
   
   
@@ -300,11 +296,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../notes/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -338,7 +336,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Alexander Skog" class="md-nav__button md-logo" aria-label="Alexander Skog" data-md-component="logo">
+    <a href="../.." title="Alexander Skog" class="md-nav__button md-logo" aria-label="Alexander Skog" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -368,7 +366,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -447,7 +445,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../openshift/" class="md-nav__link">
+      <a href="../../openshift/" class="md-nav__link">
         
   
   
@@ -475,7 +473,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../openshift/htpasswd/" class="md-nav__link">
+      <a href="../../openshift/htpasswd/" class="md-nav__link">
         
   
   
@@ -507,19 +505,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../networking/" class="md-nav__link">
         
   
   
@@ -535,7 +524,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -547,7 +535,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../virtualization/" class="md-nav__link">
+      <a href="../../virtualization/" class="md-nav__link">
         
   
   
@@ -571,26 +559,29 @@
       
   
   
+    
   
   
+  
     
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   
@@ -608,7 +599,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -626,7 +617,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../notes/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -651,10 +642,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../notes/socks-v5-proxy-in-chrome/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chrome with SOCKS v5 proxy
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -670,6 +688,103 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-i-use-this" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why I use this
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#launch-chrome-with-a-socks-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Launch Chrome with a SOCKS proxy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-to-check-when-debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What to check when debugging
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#my-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        My setup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neterr_cert_invalid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NET::ERR_CERT_INVALID
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes-to-add-later" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notes to add later
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -702,6 +817,91 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-i-use-this" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why I use this
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#launch-chrome-with-a-socks-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Launch Chrome with a SOCKS proxy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-to-check-when-debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What to check when debugging
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#my-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        My setup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neterr_cert_invalid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NET::ERR_CERT_INVALID
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes-to-add-later" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notes to add later
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -720,13 +920,51 @@
   
 
 
-<h1 id="networking">Networking<a class="headerlink" href="#networking" title="Permanent link">#</a></h1>
-<p>No posts here yet.</p>
-<p>Things I want to write about:</p>
+<h1 id="chrome-with-socks-v5-proxy">Chrome with SOCKS v5 proxy<a class="headerlink" href="#chrome-with-socks-v5-proxy" title="Permanent link">#</a></h1>
+<p>These are the settings I use when I want Chrome to send traffic through a SOCKS v5 proxy.</p>
+<h2 id="why-i-use-this">Why I use this<a class="headerlink" href="#why-i-use-this" title="Permanent link">#</a></h2>
 <ul>
-<li>DNS for lab environments</li>
-<li>Ingress and proxy setup</li>
-<li>Load balancer notes</li>
+<li>I work a lot with SSH tunnels and needed a way to access different GUIs in the browser through them.</li>
+</ul>
+<h2 id="launch-chrome-with-a-socks-proxy">Launch Chrome with a SOCKS proxy<a class="headerlink" href="#launch-chrome-with-a-socks-proxy" title="Permanent link">#</a></h2>
+<p>To send Chrome traffic through a SOCKS v5 proxy on <code>myproxy:8080</code>, start Chrome with:</p>
+<div class="highlight"><pre><span></span><code>--proxy-server<span class="o">=</span><span class="s2">&quot;socks5://myproxy:8080&quot;</span>
+--host-resolver-rules<span class="o">=</span><span class="s2">&quot;MAP * 0.0.0.0 , EXCLUDE myproxy&quot;</span>
+</code></pre></div>
+<h2 id="what-to-check-when-debugging">What to check when debugging<a class="headerlink" href="#what-to-check-when-debugging" title="Permanent link">#</a></h2>
+<p>The first thing I usually check is the Proxy tab in Chrome's net internals page to see what Chrome is actually using:</p>
+<ul>
+<li><code>chrome://net-internals/#proxy</code></li>
+</ul>
+<p>Then I check the DNS tab to make sure Chrome is not doing local DNS lookups:</p>
+<ul>
+<li><code>chrome://net-internals/#dns</code></li>
+</ul>
+<p>If I want to trace how Chrome handled a specific request, I use the Events tab:</p>
+<ul>
+<li><code>chrome://net-internals/#events</code></li>
+</ul>
+<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">#</a></h2>
+<p>Create a local SOCKS proxy with SSH:</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-C2qTnN<span class="w"> </span>-D<span class="w"> </span><span class="m">8080</span><span class="w"> </span>user@domain.com
+</code></pre></div>
+<p>Then launch Chrome with:</p>
+<div class="highlight"><pre><span></span><code>google-chrome<span class="w"> </span>--proxy-server<span class="o">=</span><span class="s2">&quot;socks5://127.0.0.1:8080&quot;</span><span class="w"> </span>--host-resolver-rules<span class="o">=</span><span class="s2">&quot;MAP * ~NOTFOUND , EXCLUDE 127.0.0.1&quot;</span>
+</code></pre></div>
+<h2 id="my-setup">My setup<a class="headerlink" href="#my-setup" title="Permanent link">#</a></h2>
+<p>On macOS I use:</p>
+<div class="highlight"><pre><span></span><code>open<span class="w"> </span>-a<span class="w"> </span>Google<span class="se">\ </span>Chrome<span class="w"> </span>--args<span class="w"> </span>--proxy-server<span class="o">=</span><span class="s2">&quot;socks5://127.0.0.1:8080&quot;</span><span class="w"> </span>--host-resolver-rules<span class="o">=</span><span class="s2">&quot;MAP * ~NOTFOUND , EXCLUDE 127.0.0.1&quot;</span>
+</code></pre></div>
+<h2 id="neterr_cert_invalid">NET::ERR_CERT_INVALID<a class="headerlink" href="#neterr_cert_invalid" title="Permanent link">#</a></h2>
+<p>If Chrome shows <code>NET::ERR_CERT_INVALID</code>, there is a hidden bypass on the error page. Click anywhere on the page and type:</p>
+<div class="highlight"><pre><span></span><code>thisisunsafe
+</code></pre></div>
+<p>I would only use that for testing in an environment I trust.</p>
+<h2 id="notes-to-add-later">Notes to add later<a class="headerlink" href="#notes-to-add-later" title="Permanent link">#</a></h2>
+<ul>
+<li>Placeholder: what tripped me up the first time</li>
+<li>Placeholder: how I verified DNS was going through the proxy</li>
+<li>Placeholder: any difference I noticed between Linux and macOS</li>
 </ul>
 
 
@@ -783,10 +1021,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.expand", "navigation.tabs", "navigation.top", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.expand", "navigation.tabs", "navigation.top", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       

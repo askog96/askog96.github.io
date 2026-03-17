@@ -8,7 +8,9 @@ nav:
       - Manage users with htpasswd: openshift/htpasswd.md
   - Networking: networking.md
   - Virtualization: virtualization.md
-  - Notes: notes.md
+  - Notes:
+      - Overview: notes.md
+      - Chrome with SOCKS v5 proxy: notes/socks-v5-proxy-in-chrome.md
 markdown_extensions:
   - toc:
       permalink: "#"
