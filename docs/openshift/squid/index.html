@@ -1019,7 +1019,6 @@
 <h1 id="running-squid-in-a-container">Running Squid in a container<a class="headerlink" href="#running-squid-in-a-container" title="Permanent link">#</a></h1>
 <p>I had been running Squid on a physical machine before, but I wanted to move it into a container to make it easier to manage and deploy.</p>
 <p>I used to run Squid on some old leftover hardware, then I started thinking: why not just run it as a container or pod instead? In my case, I have an OpenShift cluster but you can run it on vanilla Kubernetes or directly in Docker or Podman if you wanted to.</p>
-<p>These notes are based on the files in my <code>squid-proxy</code> folder. That is enough to understand how the proxy is configured and deployed, even though the actual <code>Dockerfile</code> and <code>entrypoint.sh</code> are not included.</p>
 <h2 id="what-is-in-the-project">What is in the project<a class="headerlink" href="#what-is-in-the-project" title="Permanent link">#</a></h2>
 <p>The project is split into a few parts:</p>
 <ul>
@@ -1135,7 +1134,7 @@ cache_dir ufs /var/spool/squid 100 16 256
 <li>Expose it with a Service on port <code>3128</code></li>
 <li>Add the OpenShift-specific security settings if running on OpenShift</li>
 </ol>
-<p>The part I like most with this setup is that the proxy config is kept outside the container image. That makes it easier to adjust ACLs, upstream proxy settings, and local domain rules without rebuilding the image each time.</p>
+<p>The part I like most with this setup is that the proxy config is kept outside the container image. That makes it easy to change ACLs, upstream proxy settings, and local domain rules without rebuilding the image. In this case the files are mounted with <code>subPath</code>, so the pod still needs a restart before Squid picks up the changes.</p>
 
 
 

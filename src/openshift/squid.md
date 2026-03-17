@@ -4,8 +4,6 @@ I had been running Squid on a physical machine before, but I wanted to move it i
 
 I used to run Squid on some old leftover hardware, then I started thinking: why not just run it as a container or pod instead? In my case, I have an OpenShift cluster but you can run it on vanilla Kubernetes or directly in Docker or Podman if you wanted to.
 
-These notes are based on the files in my `squid-proxy` folder. That is enough to understand how the proxy is configured and deployed, even though the actual `Dockerfile` and `entrypoint.sh` are not included.
-
 ## What is in the project
 
 The project is split into a few parts:
@@ -171,4 +169,4 @@ In practice, the setup is basically this:
 4. Expose it with a Service on port `3128`
 5. Add the OpenShift-specific security settings if running on OpenShift
 
-The part I like most with this setup is that the proxy config is kept outside the container image. That makes it easier to adjust ACLs, upstream proxy settings, and local domain rules without rebuilding the image each time.
+The part I like most with this setup is that the proxy config is kept outside the container image. That makes it easy to change ACLs, upstream proxy settings, and local domain rules without rebuilding the image. In this case the files are mounted with `subPath`, so the pod still needs a restart before Squid picks up the changes.
