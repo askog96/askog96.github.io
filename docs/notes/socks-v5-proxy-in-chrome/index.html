@@ -770,17 +770,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#notes-to-add-later" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Notes to add later
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -889,17 +878,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#notes-to-add-later" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Notes to add later
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -921,7 +899,7 @@
 
 
 <h1 id="chrome-with-socks-v5-proxy">Chrome with SOCKS v5 proxy<a class="headerlink" href="#chrome-with-socks-v5-proxy" title="Permanent link">#</a></h1>
-<p>These are the settings I use when I want Chrome to send traffic through a SOCKS v5 proxy.</p>
+<p>These are the settings I use when I want Chrome to go through a SOCKS v5 proxy.</p>
 <h2 id="why-i-use-this">Why I use this<a class="headerlink" href="#why-i-use-this" title="Permanent link">#</a></h2>
 <ul>
 <li>I work a lot with SSH tunnels and needed a way to access different GUIs in the browser through them.</li>
@@ -948,6 +926,17 @@
 <p>Create a local SOCKS proxy with SSH:</p>
 <div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-C2qTnN<span class="w"> </span>-D<span class="w"> </span><span class="m">8080</span><span class="w"> </span>user@domain.com
 </code></pre></div>
+<p>This command opens an SSH connection and creates a local SOCKS proxy on <code>127.0.0.1:8080</code>.</p>
+<p>The flags mean:</p>
+<ul>
+<li><code>-C</code> enables compression</li>
+<li><code>-2</code> forces SSH protocol version 2</li>
+<li><code>-q</code> keeps the output quiet</li>
+<li><code>-T</code> disables pseudo-terminal allocation</li>
+<li><code>-n</code> redirects stdin from <code>/dev/null</code></li>
+<li><code>-N</code> does not run a remote command</li>
+<li><code>-D 8080</code> creates the local SOCKS proxy on port <code>8080</code></li>
+</ul>
 <p>Then launch Chrome with:</p>
 <div class="highlight"><pre><span></span><code>google-chrome<span class="w"> </span>--proxy-server<span class="o">=</span><span class="s2">&quot;socks5://127.0.0.1:8080&quot;</span><span class="w"> </span>--host-resolver-rules<span class="o">=</span><span class="s2">&quot;MAP * ~NOTFOUND , EXCLUDE 127.0.0.1&quot;</span>
 </code></pre></div>
@@ -960,12 +949,6 @@
 <div class="highlight"><pre><span></span><code>thisisunsafe
 </code></pre></div>
 <p>I would only use that for testing in an environment I trust.</p>
-<h2 id="notes-to-add-later">Notes to add later<a class="headerlink" href="#notes-to-add-later" title="Permanent link">#</a></h2>
-<ul>
-<li>Placeholder: what tripped me up the first time</li>
-<li>Placeholder: how I verified DNS was going through the proxy</li>
-<li>Placeholder: any difference I noticed between Linux and macOS</li>
-</ul>
 
 
 

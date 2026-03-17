@@ -1,12 +1,10 @@
 # Chrome with SOCKS v5 proxy
 
-These are the settings I use when I want Chrome to send traffic through a SOCKS v5 proxy.
+These are the settings I use when I want Chrome to go through a SOCKS v5 proxy.
 
 ## Why I use this
 
 - I work a lot with SSH tunnels and needed a way to access different GUIs in the browser through them.
-- Placeholder: why I used Chrome with a SOCKS proxy instead of changing system proxy settings
-- Placeholder: what kind of environment I used this in
 
 ## Launch Chrome with a SOCKS proxy
 
@@ -39,6 +37,18 @@ Create a local SOCKS proxy with SSH:
 ssh -C2qTnN -D 8080 user@domain.com
 ```
 
+This command opens an SSH connection and creates a local SOCKS proxy on `127.0.0.1:8080`.
+
+The flags mean:
+
+- `-C` enables compression
+- `-2` forces SSH protocol version 2
+- `-q` keeps the output quiet
+- `-T` disables pseudo-terminal allocation
+- `-n` redirects stdin from `/dev/null`
+- `-N` does not run a remote command
+- `-D 8080` creates the local SOCKS proxy on port `8080`
+
 Then launch Chrome with:
 
 ```bash
@@ -62,9 +72,3 @@ thisisunsafe
 ```
 
 I would only use that for testing in an environment I trust.
-
-## Notes to add later
-
-- Placeholder: what tripped me up the first time
-- Placeholder: how I verified DNS was going through the proxy
-- Placeholder: any difference I noticed between Linux and macOS
