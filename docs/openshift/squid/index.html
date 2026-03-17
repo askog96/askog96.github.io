@@ -11,6 +11,10 @@
         <link rel="canonical" href="https://askog96.github.io/openshift/squid/">
       
       
+        <link rel="prev" href="../htpasswd/">
+      
+      
+        <link rel="next" href="../../networking/">
       
       
         
@@ -21,7 +25,7 @@
     
     
       
-        <title>Running squidproxy as a container on OpenShift 4 - Alexander Skog</title>
+        <title>Running Squid in a container - Alexander Skog</title>
       
     
     
@@ -74,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#running-squidproxy-as-a-container-on-openshift-4" class="md-skip">
+        <a href="#running-squid-in-a-container" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Running squidproxy as a container on OpenShift 4
+              Running Squid in a container
             
           </span>
         </div>
@@ -236,10 +240,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../" class="md-tabs__link">
           
   
@@ -386,26 +392,29 @@
       
   
   
+    
   
   
+  
     
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   
@@ -423,7 +432,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -485,6 +494,191 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Running Squid in a container
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Running Squid in a container
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-in-the-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is in the project
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-the-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Building the container
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#squid-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Squid config
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-the-config-gets-into-the-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How the config gets into the container
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running the container
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploying-it-on-kubernetes-or-openshift" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deploying it on Kubernetes or OpenShift
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#service-exposure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Service exposure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openshift-specific-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OpenShift-specific setup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pvcs-vs-current-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PVCs vs current deployment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-this-setup-looks-like-in-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What this setup looks like in practice
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -693,10 +887,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#create-new-secret-used-by-oauth" class="md-nav__link">
+  <a href="#what-is-in-the-project" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Create new secret used by OAuth
+        What is in the project
       
     </span>
   </a>
@@ -704,10 +898,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#rollout-deployment-to-apply-configuration" class="md-nav__link">
+  <a href="#building-the-container" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Rollout deployment to apply configuration
+        Building the container
       
     </span>
   </a>
@@ -715,10 +909,87 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#add-cluster-admin-to-user" class="md-nav__link">
+  <a href="#squid-config" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Add cluster-admin to user
+        Squid config
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-the-config-gets-into-the-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How the config gets into the container
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running the container
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploying-it-on-kubernetes-or-openshift" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deploying it on Kubernetes or OpenShift
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#service-exposure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Service exposure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openshift-specific-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OpenShift-specific setup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pvcs-vs-current-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PVCs vs current deployment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-this-setup-looks-like-in-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What this setup looks like in practice
       
     </span>
   </a>
@@ -745,59 +1016,126 @@
   
 
 
-<h1 id="running-squidproxy-as-a-container-on-openshift-4">Running squidproxy as a container on OpenShift 4<a class="headerlink" href="#running-squidproxy-as-a-container-on-openshift-4" title="Permanent link">#</a></h1>
-<p>After I have been running squidproxy on a physical machine, I decided to give it a try to run it as a container.</p>
-<div class="copy-to-clipboard">
-  <pre>
-  <code>htpasswd -c -B -b ~/auth-providers/htpasswd new_admin redhat</code>
-  </pre>
-</div>
-<div class="caution">
-  <code>&#9888; Caution: Running this command with the `-c` option will overwrite the existing htpasswd file. Make sure you do not lose existing user data.</code>
-</div>
-<h2 id="create-new-secret-used-by-oauth">Create new secret used by OAuth<a class="headerlink" href="#create-new-secret-used-by-oauth" title="Permanent link">#</a></h2>
-<div class="copy-to-clipboard">
-  <pre>
-  <code>oc create secret generic localusers --from-file htpasswd=~/auth-providers/htpasswd -n openshift-config</code>
-  </pre>
-</div>
-<h2 id="rollout-deployment-to-apply-configuration">Rollout deployment to apply configuration<a class="headerlink" href="#rollout-deployment-to-apply-configuration" title="Permanent link">#</a></h2>
-<div class="copy-to-clipboard">
-  <pre>
-  <code>oc rollout restart deployment/oauth-openshift -n openshift-authentication</code>
-  </pre>
-</div>
-<h2 id="add-cluster-admin-to-user">Add cluster-admin to user<a class="headerlink" href="#add-cluster-admin-to-user" title="Permanent link">#</a></h2>
-<div class="copy-to-clipboard">
-  <pre>
-  <code>oc adm policy add-cluster-role-to-user cluster-admin new_admin</code>
-  </pre>
-</div>
-<h1 id="add-a-user-to-existing-oauth-config">Add a user to existing OAuth config<a class="headerlink" href="#add-a-user-to-existing-oauth-config" title="Permanent link">#</a></h1>
-<h2 id="extract-the-file-data-from-secret">Extract the file data from secret<a class="headerlink" href="#extract-the-file-data-from-secret" title="Permanent link">#</a></h2>
-<div class="copy-to-clipboard">
-  <pre>
-  <code>oc extract secret/localusers -n openshift-config --to ~/auth-providers/ --confirm</code>
-  </pre>
-</div>
-<h2 id="add-new-user-to-htpasswd-called-manager-with-password-redhat">Add new user to htpasswd called manager with password redhat<a class="headerlink" href="#add-new-user-to-htpasswd-called-manager-with-password-redhat" title="Permanent link">#</a></h2>
-<div class="copy-to-clipboard">
-  <pre>
-  <code>htpasswd -b ~/auth-providers/htpasswd manager redhat</code>
-  </pre>
-</div>
-<h2 id="update-secret-used-by-oauth">Update secret used by OAuth<a class="headerlink" href="#update-secret-used-by-oauth" title="Permanent link">#</a></h2>
-<div class="copy-to-clipboard">
-  <pre>
-  <code>oc set data secret/localusers --from-file htpasswd=~/auth-providers/htpasswd -n openshift-config</code>
-  </pre>
-</div>
-<h2 id="rollout-deployment-to-apply-configuration_1">Rollout deployment to apply configuration<a class="headerlink" href="#rollout-deployment-to-apply-configuration_1" title="Permanent link">#</a></h2>
-<div class="copy-to-clipboard">
-  <pre>
-  <code>oc rollout restart deployment/oauth-openshift -n openshift-authentication</code>
-  </pre>
-</div>
+<h1 id="running-squid-in-a-container">Running Squid in a container<a class="headerlink" href="#running-squid-in-a-container" title="Permanent link">#</a></h1>
+<p>I had been running Squid on a physical machine before, but I wanted to move it into a container to make it easier to manage and deploy.</p>
+<p>I used to run Squid on some old leftover hardware, then I started thinking: why not just run it as a container or pod instead? In my case, I have an OpenShift cluster but you can run it on vanilla Kubernetes or directly in Docker or Podman if you wanted to.</p>
+<p>These notes are based on the files in my <code>squid-proxy</code> folder. That is enough to understand how the proxy is configured and deployed, even though the actual <code>Dockerfile</code> and <code>entrypoint.sh</code> are not included.</p>
+<h2 id="what-is-in-the-project">What is in the project<a class="headerlink" href="#what-is-in-the-project" title="Permanent link">#</a></h2>
+<p>The project is split into a few parts:</p>
+<ul>
+<li><code>squid.conf</code> for the main Squid configuration</li>
+<li><code>mime.conf</code> for MIME type mappings</li>
+<li><code>configmap.yaml</code> to mount the config into the container</li>
+<li><code>deploy.yaml</code> for the Squid deployment</li>
+<li><code>svc.yaml</code> to expose the proxy on port <code>3128</code></li>
+<li><code>ingress.yaml</code> for HTTP ingress</li>
+<li><code>squid-scc.yaml</code> for OpenShift security context constraints</li>
+<li><code>README</code> with basic Docker build and run commands</li>
+</ul>
+<h2 id="building-the-container">Building the container<a class="headerlink" href="#building-the-container" title="Permanent link">#</a></h2>
+<p>The project README shows a simple Docker build and push flow:</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>squid-proxy:v1.0<span class="w"> </span>--omit-history<span class="w"> </span>.
+docker<span class="w"> </span>push<span class="w"> </span>squid-proxy:v1.0
+</code></pre></div>
+<p>The README also shows how the image was tested interactively:</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>localhost/squid-proxy:v1.0<span class="w"> </span>/bin/bash
+</code></pre></div>
+<p>The actual <code>Dockerfile</code> or <code>Containerfile</code> is not in this folder, so this page is mostly about how the proxy is configured and deployed rather than how the image is built internally.</p>
+<h2 id="squid-config">Squid config<a class="headerlink" href="#squid-config" title="Permanent link">#</a></h2>
+<p>There are two places where the Squid config shows up in this project:</p>
+<ul>
+<li>a standalone <code>squid.conf</code></li>
+<li>an embedded version inside <code>configmap.yaml</code></li>
+</ul>
+<p>The general pattern is the same in both places: Squid listens on <code>3128</code>, defines ACLs, and uses local disk for cache and runtime data.</p>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>http_port 3128
+cache_dir ufs /var/spool/squid 100 16 256
+</code></pre></div>
+<p>A few things that stand out in the config:</p>
+<ul>
+<li>local source networks are defined with <code>acl localnet</code></li>
+<li>safe ports and <code>CONNECT</code> ACLs are defined</li>
+<li>local domains and specific destination networks are allowed directly</li>
+<li>all other traffic can be forwarded through an upstream proxy with <code>cache_peer</code></li>
+</ul>
+<p>The config also references writable paths like:</p>
+<ul>
+<li><code>/var/spool/squid</code></li>
+<li><code>/var/log/squid</code></li>
+<li><code>/var/run/squid</code></li>
+</ul>
+<p>From the manifests, I can clearly see storage mounted for <code>/var/spool/squid</code>. The log and runtime paths are in the config too, but how those are prepared inside the container depends on the image and entrypoint, and those files are not part of this folder.</p>
+<h2 id="how-the-config-gets-into-the-container">How the config gets into the container<a class="headerlink" href="#how-the-config-gets-into-the-container" title="Permanent link">#</a></h2>
+<p>The Kubernetes setup uses a ConfigMap called <code>squid-config</code> and mounts <code>squid.conf</code> into the container:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">squid-config</span>
+<span class="w">    </span><span class="nt">configMap</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">squid-config</span>
+</code></pre></div>
+<p>and:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">volumeMounts</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">squid-config</span>
+<span class="w">    </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/squid/squid.conf</span>
+<span class="w">    </span><span class="nt">subPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">squid.conf</span>
+</code></pre></div>
+<p>There is also a second ConfigMap for <code>mime.conf</code>.</p>
+<p>That makes it easier to update the proxy config without rebuilding the image.</p>
+<h2 id="running-the-container">Running the container<a class="headerlink" href="#running-the-container" title="Permanent link">#</a></h2>
+<p>The README shows the image being tested locally with:</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>localhost/squid-proxy:v1.0<span class="w"> </span>/bin/bash
+</code></pre></div>
+<p>That part is the same no matter where you run it. If the image works, it can run with Docker, Podman, Kubernetes, OpenShift, or any other platform that supports containers.</p>
+<h2 id="deploying-it-on-kubernetes-or-openshift">Deploying it on Kubernetes or OpenShift<a class="headerlink" href="#deploying-it-on-kubernetes-or-openshift" title="Permanent link">#</a></h2>
+<p>The deployment runs a single Squid replica and starts it through an entrypoint script:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">containers</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">squid</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">squid-proxy:v1.0</span>
+<span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;/bin/bash&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-c&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;/usr/local/bin/entrypoint.sh&quot;</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<p>The container exposes port <code>3128</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">ports</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3128</span>
+<span class="w">    </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+</code></pre></div>
+<p>The deployment also mounts an <code>emptyDir</code> volume to <code>/var/spool/squid</code>, which is where Squid keeps cache data in this setup.</p>
+<h2 id="service-exposure">Service exposure<a class="headerlink" href="#service-exposure" title="Permanent link">#</a></h2>
+<p>The Service exposes Squid as a <code>LoadBalancer</code> on port <code>3128</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LoadBalancer</span>
+<span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3128</span>
+<span class="w">      </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3128</span>
+</code></pre></div>
+<p>There is also an ingress manifest in the project, but for a forward proxy the <code>LoadBalancer</code> Service is the part that matters most.</p>
+<h2 id="openshift-specific-setup">OpenShift-specific setup<a class="headerlink" href="#openshift-specific-setup" title="Permanent link">#</a></h2>
+<p>There is an SCC manifest called <code>squid-scc.yaml</code> for OpenShift. It allows the container to run with the security settings this image expects.</p>
+<p>From the deployment:</p>
+<ul>
+<li>a dedicated service account is used</li>
+<li><code>fsGroup: 999</code> is set</li>
+<li><code>allowPrivilegeEscalation: true</code> is enabled in the container security context</li>
+</ul>
+<p>I do not see the ServiceAccount manifest itself in this folder, but the deployment clearly expects one named <code>squid-proxy</code>.</p>
+<p>From that, it looks like the deployment was adjusted so Squid would run properly inside OpenShift with writable mounted paths and a custom runtime user setup.</p>
+<h2 id="pvcs-vs-current-deployment">PVCs vs current deployment<a class="headerlink" href="#pvcs-vs-current-deployment" title="Permanent link">#</a></h2>
+<p>The project also includes <code>pvc.yaml</code> for cache and logs, but the current deployment manifest uses <code>emptyDir</code> instead of the PVCs.</p>
+<p>So at the moment:</p>
+<ul>
+<li>cache is ephemeral</li>
+<li>the pod can be recreated without keeping cached data</li>
+</ul>
+<p>If persistent cache or logs are important, the deployment would need to mount those PVCs instead of using <code>emptyDir</code>.</p>
+<h2 id="what-this-setup-looks-like-in-practice">What this setup looks like in practice<a class="headerlink" href="#what-this-setup-looks-like-in-practice" title="Permanent link">#</a></h2>
+<p>In practice, the setup is basically this:</p>
+<ol>
+<li>Build and push a Squid container image</li>
+<li>Put <code>squid.conf</code> and <code>mime.conf</code> in ConfigMaps</li>
+<li>Deploy the container with writable mounted storage</li>
+<li>Expose it with a Service on port <code>3128</code></li>
+<li>Add the OpenShift-specific security settings if running on OpenShift</li>
+</ol>
+<p>The part I like most with this setup is that the proxy config is kept outside the container image. That makes it easier to adjust ACLs, upstream proxy settings, and local domain rules without rebuilding the image each time.</p>
 
 
 

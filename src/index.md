@@ -5,6 +5,7 @@ Notes and write-ups from working with OpenShift, Kubernetes, networking, and vir
 ## Latest
 
 - [Manage users with htpasswd](openshift/htpasswd.md)
+- [Running Squid in a container](openshift/squid.md)
 
 ## Topics
 

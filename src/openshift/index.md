@@ -5,3 +5,4 @@ Posts and notes related to OpenShift and Kubernetes.
 ## Posts
 
 - [Manage users with htpasswd](htpasswd.md)
+- [Running Squid in a container](squid.md)
