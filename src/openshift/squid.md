@@ -10,7 +10,7 @@ The project is split into a few parts:
 - `mime.conf` for MIME type mappings
 - `configmap.yaml` to mount the config into the container
 - `deploy.yaml` for the Squid deployment
-- `serviceaccount.yaml` for the `squid-proxy` ServiceAccount
+- `pvc.yaml` for persistent cache and log storage
 - `svc.yaml` to expose the proxy on port `3128`
 - `ingress.yaml` for HTTP ingress
 - `squid-scc.yaml` for OpenShift security context constraints
@@ -62,7 +62,7 @@ The config also references writable paths like:
 - `/var/log/squid`
 - `/var/run/squid`
 
-From the manifests, I can clearly see storage mounted for `/var/spool/squid`. The log and runtime paths are in the config too, but how those are prepared inside the container depends on the image and entrypoint, and those files are not part of this folder.
+From the manifests, I can clearly see persistent storage mounted for `/var/spool/squid` and `/var/log/squid`. The runtime path is also in the config, but how that is prepared inside the container depends on the image and entrypoint, and those files are not part of this folder.
 
 ## How the config gets into the container
 
@@ -117,7 +117,22 @@ ports:
     protocol: TCP
 ```
 
-The deployment also mounts an `emptyDir` volume to `/var/spool/squid`, which is where Squid keeps cache data in this setup.
+The deployment mounts PVC-backed storage for Squid data:
+
+```yaml
+volumes:
+  - name: squid-cache
+    persistentVolumeClaim:
+      claimName: squid-cache-pvc
+  - name: squid-logs
+    persistentVolumeClaim:
+      claimName: squid-logs-pvc
+```
+
+Those PVCs are mounted to:
+
+- `/var/spool/squid`
+- `/var/log/squid`
 
 ## Service exposure
 
@@ -143,20 +158,16 @@ From the deployment:
 - `fsGroup: 999` is set
 - `allowPrivilegeEscalation: true` is enabled in the container security context
 
-There is also a `serviceaccount.yaml` file for the `squid-proxy` ServiceAccount.
+## Persistent storage
 
-This looks like it was adjusted so Squid would run properly inside OpenShift with writable mounted paths and the permissions it needs.
+The project includes `pvc.yaml` for cache and log storage, and the deployment uses those PVCs directly.
 
-## PVCs vs current deployment
+So in this setup:
 
-The project also includes `pvc.yaml` for cache and logs, but the current deployment manifest uses `emptyDir` instead of the PVCs.
+- cache survives pod restarts
+- Squid logs can be kept outside the container filesystem
 
-So at the moment:
-
-- cache is ephemeral
-- the pod can be recreated without keeping cached data
-
-If persistent cache or logs are important, the deployment would need to mount those PVCs instead of using `emptyDir`.
+That makes more sense for a proxy like this than using `emptyDir`, especially if you want to keep cache data or logs when the pod is recreated.
 
 ## What this setup looks like in practice
 
@@ -164,7 +175,7 @@ In practice, the setup is basically this:
 
 1. Build and push a Squid container image
 2. Put `squid.conf` and `mime.conf` in ConfigMaps
-3. Deploy the container with writable mounted storage
+3. Deploy the container with mounted PVCs for cache and logs
 4. Expose it with a Service on port `3128`
 5. Add the OpenShift-specific security settings if running on OpenShift
 

@@ -654,10 +654,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pvcs-vs-current-deployment" class="md-nav__link">
+  <a href="#persistent-storage" class="md-nav__link">
     <span class="md-ellipsis">
       
-        PVCs vs current deployment
+        Persistent storage
       
     </span>
   </a>
@@ -975,10 +975,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pvcs-vs-current-deployment" class="md-nav__link">
+  <a href="#persistent-storage" class="md-nav__link">
     <span class="md-ellipsis">
       
-        PVCs vs current deployment
+        Persistent storage
       
     </span>
   </a>
@@ -1025,7 +1025,7 @@
 <li><code>mime.conf</code> for MIME type mappings</li>
 <li><code>configmap.yaml</code> to mount the config into the container</li>
 <li><code>deploy.yaml</code> for the Squid deployment</li>
-<li><code>serviceaccount.yaml</code> for the <code>squid-proxy</code> ServiceAccount</li>
+<li><code>pvc.yaml</code> for persistent cache and log storage</li>
 <li><code>svc.yaml</code> to expose the proxy on port <code>3128</code></li>
 <li><code>ingress.yaml</code> for HTTP ingress</li>
 <li><code>squid-scc.yaml</code> for OpenShift security context constraints</li>
@@ -1064,7 +1064,7 @@ cache_dir ufs /var/spool/squid 100 16 256
 <li><code>/var/log/squid</code></li>
 <li><code>/var/run/squid</code></li>
 </ul>
-<p>From the manifests, I can clearly see storage mounted for <code>/var/spool/squid</code>. The log and runtime paths are in the config too, but how those are prepared inside the container depends on the image and entrypoint, and those files are not part of this folder.</p>
+<p>From the manifests, I can clearly see persistent storage mounted for <code>/var/spool/squid</code> and <code>/var/log/squid</code>. The runtime path is also in the config, but how that is prepared inside the container depends on the image and entrypoint, and those files are not part of this folder.</p>
 <h2 id="how-the-config-gets-into-the-container">How the config gets into the container<a class="headerlink" href="#how-the-config-gets-into-the-container" title="Permanent link">#</a></h2>
 <p>The Kubernetes setup uses a ConfigMap called <code>squid-config</code> and mounts <code>squid.conf</code> into the container:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">volumes</span><span class="p">:</span>
@@ -1097,7 +1097,20 @@ cache_dir ufs /var/spool/squid 100 16 256
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3128</span>
 <span class="w">    </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
 </code></pre></div>
-<p>The deployment also mounts an <code>emptyDir</code> volume to <code>/var/spool/squid</code>, which is where Squid keeps cache data in this setup.</p>
+<p>The deployment mounts PVC-backed storage for Squid data:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">squid-cache</span>
+<span class="w">    </span><span class="nt">persistentVolumeClaim</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">claimName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">squid-cache-pvc</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">squid-logs</span>
+<span class="w">    </span><span class="nt">persistentVolumeClaim</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">claimName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">squid-logs-pvc</span>
+</code></pre></div>
+<p>Those PVCs are mounted to:</p>
+<ul>
+<li><code>/var/spool/squid</code></li>
+<li><code>/var/log/squid</code></li>
+</ul>
 <h2 id="service-exposure">Service exposure<a class="headerlink" href="#service-exposure" title="Permanent link">#</a></h2>
 <p>The Service exposes Squid as a <code>LoadBalancer</code> on port <code>3128</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
@@ -1115,22 +1128,20 @@ cache_dir ufs /var/spool/squid 100 16 256
 <li><code>fsGroup: 999</code> is set</li>
 <li><code>allowPrivilegeEscalation: true</code> is enabled in the container security context</li>
 </ul>
-<p>There is also a <code>serviceaccount.yaml</code> file for the <code>squid-proxy</code> ServiceAccount.</p>
-<p>This looks like it was adjusted so Squid would run properly inside OpenShift with writable mounted paths and the permissions it needs.</p>
-<h2 id="pvcs-vs-current-deployment">PVCs vs current deployment<a class="headerlink" href="#pvcs-vs-current-deployment" title="Permanent link">#</a></h2>
-<p>The project also includes <code>pvc.yaml</code> for cache and logs, but the current deployment manifest uses <code>emptyDir</code> instead of the PVCs.</p>
-<p>So at the moment:</p>
+<h2 id="persistent-storage">Persistent storage<a class="headerlink" href="#persistent-storage" title="Permanent link">#</a></h2>
+<p>The project includes <code>pvc.yaml</code> for cache and log storage, and the deployment uses those PVCs directly.</p>
+<p>So in this setup:</p>
 <ul>
-<li>cache is ephemeral</li>
-<li>the pod can be recreated without keeping cached data</li>
+<li>cache survives pod restarts</li>
+<li>Squid logs can be kept outside the container filesystem</li>
 </ul>
-<p>If persistent cache or logs are important, the deployment would need to mount those PVCs instead of using <code>emptyDir</code>.</p>
+<p>That makes more sense for a proxy like this than using <code>emptyDir</code>, especially if you want to keep cache data or logs when the pod is recreated.</p>
 <h2 id="what-this-setup-looks-like-in-practice">What this setup looks like in practice<a class="headerlink" href="#what-this-setup-looks-like-in-practice" title="Permanent link">#</a></h2>
 <p>In practice, the setup is basically this:</p>
 <ol>
 <li>Build and push a Squid container image</li>
 <li>Put <code>squid.conf</code> and <code>mime.conf</code> in ConfigMaps</li>
-<li>Deploy the container with writable mounted storage</li>
+<li>Deploy the container with mounted PVCs for cache and logs</li>
 <li>Expose it with a Service on port <code>3128</code></li>
 <li>Add the OpenShift-specific security settings if running on OpenShift</li>
 </ol>
