@@ -1,7 +1,5 @@
 # Running Squid in a container
 
-I had been running Squid on a physical machine before, but I wanted to move it into a container to make it easier to manage and deploy.
-
 I used to run Squid on some old leftover hardware, then I started thinking: why not just run it as a container or pod instead? In my case, I have an OpenShift cluster but you can run it on vanilla Kubernetes or directly in Docker or Podman if you wanted to.
 
 ## What is in the project
@@ -12,6 +10,7 @@ The project is split into a few parts:
 - `mime.conf` for MIME type mappings
 - `configmap.yaml` to mount the config into the container
 - `deploy.yaml` for the Squid deployment
+- `serviceaccount.yaml` for the `squid-proxy` ServiceAccount
 - `svc.yaml` to expose the proxy on port `3128`
 - `ingress.yaml` for HTTP ingress
 - `squid-scc.yaml` for OpenShift security context constraints
@@ -144,9 +143,9 @@ From the deployment:
 - `fsGroup: 999` is set
 - `allowPrivilegeEscalation: true` is enabled in the container security context
 
-I do not see the ServiceAccount manifest itself in this folder, but the deployment clearly expects one named `squid-proxy`.
+There is also a `serviceaccount.yaml` file for the `squid-proxy` ServiceAccount.
 
-From that, it looks like the deployment was adjusted so Squid would run properly inside OpenShift with writable mounted paths and a custom runtime user setup.
+This looks like it was adjusted so Squid would run properly inside OpenShift with writable mounted paths and the permissions it needs.
 
 ## PVCs vs current deployment
 

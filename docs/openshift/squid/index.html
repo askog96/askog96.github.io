@@ -1017,7 +1017,6 @@
 
 
 <h1 id="running-squid-in-a-container">Running Squid in a container<a class="headerlink" href="#running-squid-in-a-container" title="Permanent link">#</a></h1>
-<p>I had been running Squid on a physical machine before, but I wanted to move it into a container to make it easier to manage and deploy.</p>
 <p>I used to run Squid on some old leftover hardware, then I started thinking: why not just run it as a container or pod instead? In my case, I have an OpenShift cluster but you can run it on vanilla Kubernetes or directly in Docker or Podman if you wanted to.</p>
 <h2 id="what-is-in-the-project">What is in the project<a class="headerlink" href="#what-is-in-the-project" title="Permanent link">#</a></h2>
 <p>The project is split into a few parts:</p>
@@ -1026,6 +1025,7 @@
 <li><code>mime.conf</code> for MIME type mappings</li>
 <li><code>configmap.yaml</code> to mount the config into the container</li>
 <li><code>deploy.yaml</code> for the Squid deployment</li>
+<li><code>serviceaccount.yaml</code> for the <code>squid-proxy</code> ServiceAccount</li>
 <li><code>svc.yaml</code> to expose the proxy on port <code>3128</code></li>
 <li><code>ingress.yaml</code> for HTTP ingress</li>
 <li><code>squid-scc.yaml</code> for OpenShift security context constraints</li>
@@ -1115,8 +1115,8 @@ cache_dir ufs /var/spool/squid 100 16 256
 <li><code>fsGroup: 999</code> is set</li>
 <li><code>allowPrivilegeEscalation: true</code> is enabled in the container security context</li>
 </ul>
-<p>I do not see the ServiceAccount manifest itself in this folder, but the deployment clearly expects one named <code>squid-proxy</code>.</p>
-<p>From that, it looks like the deployment was adjusted so Squid would run properly inside OpenShift with writable mounted paths and a custom runtime user setup.</p>
+<p>There is also a <code>serviceaccount.yaml</code> file for the <code>squid-proxy</code> ServiceAccount.</p>
+<p>This looks like it was adjusted so Squid would run properly inside OpenShift with writable mounted paths and the permissions it needs.</p>
 <h2 id="pvcs-vs-current-deployment">PVCs vs current deployment<a class="headerlink" href="#pvcs-vs-current-deployment" title="Permanent link">#</a></h2>
 <p>The project also includes <code>pvc.yaml</code> for cache and logs, but the current deployment manifest uses <code>emptyDir</code> instead of the PVCs.</p>
 <p>So at the moment:</p>
